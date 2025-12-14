@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBUtils {
-
-    // Fetch meals of a given type from the database
     public static List<String> getMeals(String mealType) {
         List<String> meals = new ArrayList<>();
         try (Connection con = DBConnection.getConnection();
@@ -19,10 +17,11 @@ public class DBUtils {
                 meals.add(rs.getString("meal_name"));
             }
         } catch (Exception e) {
-            e.printStackTrace(); // or handle with JOptionPane if needed
+            e.printStackTrace();
         }
         return meals;
     }
 }
+
 
 

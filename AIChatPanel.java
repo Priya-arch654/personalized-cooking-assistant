@@ -10,16 +10,16 @@ import java.util.Arrays;
 public class AIChatPanel extends JPanel {
 
     private String backgroundImagePath = "C:\\Users\\hp\\Downloads\\Grilled Chicken with Roasted Potatoes and Salad.png";
-    private BufferedImage blurredBackground; // blurred version
+    private BufferedImage blurredBackground; 
 
     public AIChatPanel() {
         setLayout(new BorderLayout(10, 10));
-        prepareBlurredBackground(backgroundImagePath); // create blur
+        prepareBlurredBackground(backgroundImagePath); 
         setOpaque(false);
 
         // --- Stylish title with big font ---
         JLabel title = new JLabel("AI Meal Assistant", SwingConstants.CENTER);
-        title.setFont(new Font("Serif", Font.BOLD, 36)); // BIG FONT
+        title.setFont(new Font("Serif", Font.BOLD, 36));
         title.setForeground(Color.BLACK);
         add(title, BorderLayout.NORTH);
 
@@ -28,7 +28,7 @@ public class AIChatPanel extends JPanel {
         chatArea.setEditable(false);
         chatArea.setOpaque(false);
         chatArea.setForeground(Color.BLACK);
-        chatArea.setFont(new Font("Monospaced", Font.BOLD, 24)); // BIG FONT
+        chatArea.setFont(new Font("Monospaced", Font.BOLD, 24));
 
         JScrollPane scroll = new JScrollPane(chatArea);
         scroll.setOpaque(false);
@@ -38,15 +38,15 @@ public class AIChatPanel extends JPanel {
 
         // --- Input panel ---
         JTextField inputField = new JTextField();
-        inputField.setFont(new Font("Monospaced", Font.BOLD, 24)); // BIG FONT
+        inputField.setFont(new Font("Monospaced", Font.BOLD, 24)); 
         JButton sendBtn = UIUtils.colorfulButton("Send", new Color(0, 150, 136));
-        sendBtn.setFont(new Font("Arial", Font.BOLD, 24)); // BIG FONT
+        sendBtn.setFont(new Font("Arial", Font.BOLD, 24)); 
 
         JPanel inputPanel = new JPanel(new BorderLayout(5, 5)) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.setColor(new Color(255, 255, 255, 180)); // semi-transparent white
+                g.setColor(new Color(255, 255, 255, 180)); 
                 g.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
             }
         };
@@ -55,7 +55,7 @@ public class AIChatPanel extends JPanel {
         inputPanel.add(sendBtn, BorderLayout.EAST);
         add(inputPanel, BorderLayout.SOUTH);
 
-        // --- Action listeners ---
+      
         sendBtn.addActionListener(e -> sendMessage(chatArea, inputField));
         inputField.addActionListener(e -> sendMessage(chatArea, inputField));
     }
@@ -71,12 +71,12 @@ public class AIChatPanel extends JPanel {
             g2.drawImage(img, 0, 0, null);
             g2.dispose();
 
-            // 5x5 blur kernel
+       
             float[] matrix = new float[25];
             Arrays.fill(matrix, 1f / 25f);
             ConvolveOp op = new ConvolveOp(new Kernel(5, 5, matrix), ConvolveOp.EDGE_NO_OP, null);
 
-            // Apply multiple passes for smoother blur
+            
             BufferedImage temp = original;
             for (int i = 0; i < 3; i++) {
                 temp = op.filter(temp, null);
@@ -166,3 +166,4 @@ public class AIChatPanel extends JPanel {
         }
     }
 }
+

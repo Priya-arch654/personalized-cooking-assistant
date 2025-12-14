@@ -12,7 +12,7 @@ public class ManagePantryPanel extends JPanel {
     private JTextField nameField, qtyField, catField;
     private JTable table;
     private DefaultTableModel model;
-    private String username; // current user
+    private String username; 
 
     private static Map<String, java.util.List<Ingredient>> userIngredients = new HashMap<>();
 
@@ -22,9 +22,9 @@ public class ManagePantryPanel extends JPanel {
     public ManagePantryPanel(String username) {
         this.username = username;
         setLayout(new GridBagLayout());
-        prepareBlurredBackground(backgroundImagePath); // create blurred image
+        prepareBlurredBackground(backgroundImagePath);
         initialize();
-        loadUserIngredients(); // Load existing ingredients if any
+        loadUserIngredients(); 
     }
 
     private void prepareBlurredBackground(String path){
@@ -37,13 +37,9 @@ public class ManagePantryPanel extends JPanel {
             Graphics2D g2 = original.createGraphics();
             g2.drawImage(img, 0, 0, null);
             g2.dispose();
-
-            // stronger blur: 5x5 kernel
             float[] matrix = new float[25];
-            Arrays.fill(matrix, 1f/25f); // average kernel
+            Arrays.fill(matrix, 1f/25f); 
             ConvolveOp op = new ConvolveOp(new Kernel(5, 5, matrix), ConvolveOp.EDGE_NO_OP, null);
-
-            // Apply blur multiple times for smoother effect
             BufferedImage temp = original;
             for(int i=0;i<3;i++){
                 temp = op.filter(temp, null);
@@ -210,3 +206,4 @@ public class ManagePantryPanel extends JPanel {
         }
     }
 }
+

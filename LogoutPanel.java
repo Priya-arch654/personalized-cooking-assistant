@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 public class LogoutPanel extends JPanel {
     private Image backgroundImage;
 
-    // MySQL connection
+
     private final String DB_URL = "jdbc:mysql://localhost:3306/cookingassistant";
     private final String DB_USER = "cookingassistant";
     private final String DB_PASS = "root";
@@ -28,7 +28,7 @@ public class LogoutPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        // Overlay panel
+ 
         JPanel overlay = new JPanel(new GridBagLayout()) {
             @Override
             protected void paintComponent(Graphics g) {
@@ -53,7 +53,7 @@ public class LogoutPanel extends JPanel {
         rateLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         overlay.add(rateLabel, ogbc);
 
-        // Stars as JLabel
+  
         ogbc.gridy++;
         JPanel starsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
         starsPanel.setOpaque(false);
@@ -123,3 +123,4 @@ public class LogoutPanel extends JPanel {
         }
     }
 }
+

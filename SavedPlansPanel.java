@@ -8,7 +8,6 @@ public class SavedPlansPanel extends JPanel {
     private SmartMealPlannerAllInOne.UserData data;
     private JTextArea plansArea;
 
-    // Background image path
     private String backgroundImagePath = "C:\\Users\\hp\\Downloads\\Grilled Chicken with Roasted Potatoes and Salad.png";
 
     public SavedPlansPanel(SmartMealPlannerAllInOne.UserData data) {
@@ -19,13 +18,13 @@ public class SavedPlansPanel extends JPanel {
     }
 
     private void initialize() {
-        // Title
+
         JLabel title = new JLabel("Saved Meal Plans", SwingConstants.CENTER);
         title.setFont(new Font("Serif", Font.BOLD, 24));
         title.setForeground(Color.BLACK);
         add(title, BorderLayout.NORTH);
 
-        // Text area for plans
+
         plansArea = new JTextArea();
         plansArea.setFont(new Font("Monospaced", Font.BOLD, 16));
         plansArea.setEditable(false);
@@ -38,7 +37,7 @@ public class SavedPlansPanel extends JPanel {
         scroll.setBorder(null);
         add(scroll, BorderLayout.CENTER);
 
-        // Refresh button
+
         JButton refreshBtn = UIUtils.colorfulButton("Refresh", new Color(76, 175, 80));
         refreshBtn.addActionListener(e -> refreshPlans());
 
@@ -57,7 +56,6 @@ public class SavedPlansPanel extends JPanel {
         refreshPlans();
     }
 
-    // Make this public so AutomaticPlannerPanel can call it
     public void refreshPlans() {
         StringBuilder sb = new StringBuilder();
         int idx = 1;
@@ -79,3 +77,4 @@ public class SavedPlansPanel extends JPanel {
         }
     }
 }
+

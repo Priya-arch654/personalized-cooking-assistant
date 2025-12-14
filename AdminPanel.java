@@ -11,7 +11,6 @@ public class AdminPanel extends JPanel {
     private SmartMealPlannerAllInOne app;
     private String backgroundImagePath = "C:\\Users\\hp\\Downloads\\Grilled Chicken with Roasted Potatoes and Salad.png";
 
-    // MySQL connection details
     private final String DB_URL = "jdbc:mysql://localhost:3306/cookingassistant";
     private final String DB_USER = "cookingassistant";
     private final String DB_PASS = "root";
@@ -58,7 +57,7 @@ public class AdminPanel extends JPanel {
 
         add(buttonPanel);
 
-        // ----------------- ACTION LISTENERS -----------------
+
         viewUsersBtn.addActionListener(e -> viewUsers());
         mealListsBtn.addActionListener(e -> manageMealLists());
         viewRatingsBtn.addActionListener(e -> viewRatings());
@@ -78,7 +77,6 @@ public class AdminPanel extends JPanel {
         }
     }
 
-    // ----------------- ADMIN FUNCTIONS -----------------
     
     private void viewUsers() {
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
@@ -167,7 +165,7 @@ public class AdminPanel extends JPanel {
                     }
                 }
                 break;
-            case 2: // Delete
+            case 2:
                 int delRow = table.getSelectedRow();
                 if (delRow >= 0) {
                     int id = (int) table.getValueAt(delRow, 0);
@@ -196,7 +194,6 @@ public class AdminPanel extends JPanel {
         }
     }
 
-    // ----------------- NEW: VIEW RATINGS -----------------
     private void viewRatings() {
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
             Statement stmt = conn.createStatement();
@@ -221,3 +218,4 @@ public class AdminPanel extends JPanel {
         }
     }
 }
+
